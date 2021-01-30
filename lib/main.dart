@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                     ),
-SizedBox( width: 50),
+                    SizedBox( width: 50),
                     Image(image: AssetImage('images/1-01.png'),height: 100,width: 100,),
                     SizedBox( width: 50),
                     InkWell(
@@ -149,14 +149,11 @@ SizedBox( width: 50),
                           height: 60.0,
                           width: 150.0,
                         ),
-
                       ],
                     ),
                   ),
                   painter: HeaderCurvedContainer(),
                 ),
-
-
               ],),
               SizedBox(
                 height: 10.0,
@@ -168,81 +165,13 @@ SizedBox( width: 50),
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      Container(
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(flex: 80, child:Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(child: Image(image: AssetImage('images/sports.png'),)),
-                            ), ),
-                            Expanded(flex:20, child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.yellow,
-                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0),bottomRight: Radius.circular(20.0),),
-                                ),
-                                child: Center(child: Text('SPORTS', style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold, backgroundColor: Colors.yellow, color: Colors.blue),))),),
-
-                          ],
-                        ),
-                      ),
+                      listviewContainer(listviewImage: 'images/sports.png', boxcolor: Colors.yellow, boxnamecolor: Colors.blue,textname: 'SPORTS',),
                       SizedBox( width: 20,),
-                      Container(
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(flex: 80, child:Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(child: Image(image: AssetImage('images/history.png'),)),
-                            ), ),
-                            Expanded(flex:20, child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0),bottomRight: Radius.circular(20.0),),
-                                ),
-                                child: Center(child: Text('HISTORY', style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold, backgroundColor: Colors.blueAccent, color: Colors.white),))),),
-
-                          ],
-                        ),
-                      ),
+                      listviewContainer(listviewImage: 'images/history.png', boxcolor: Colors.blue, boxnamecolor: Colors.white,textname: 'HISTORY',),
                       SizedBox( width: 20,),
-                      Container(
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(flex: 80, child:Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(child: Image(image: AssetImage('images/science.png'),)),
-                            ), ),
-                            Expanded(flex:20, child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0),bottomRight: Radius.circular(20.0),),
-                                ),
-                                child: Center(child: Text('SCIENCE', style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold,  color: Colors.white),))),),
-
-                          ],
-                        ),
-                      ),
+                      listviewContainer(listviewImage: 'images/science.png', boxcolor: Colors.blue, boxnamecolor: Colors.white,textname: 'SCIENCE',),
                       SizedBox( width: 20,),
+                      listviewContainer(listviewImage: 'images/movie.png', boxcolor: Colors.blue, boxnamecolor: Colors.white,textname: 'MOVIE',),
                       Container(
                         width: 100.0,
                         decoration: BoxDecoration(
@@ -290,12 +219,10 @@ SizedBox( width: 50),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                    children: [
-                     Text('SOLO', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
-                     Text('VERSES',style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
-                     Text('TABLE',style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
+                     finalContainer(textname: 'SOLO',),
+                     finalContainer(textname: 'VERSES',),
+                     finalContainer(textname: 'TABLE',),
                    ],
-
-
                   ),
                 ),
               )
@@ -304,6 +231,52 @@ SizedBox( width: 50),
         ),
       ),
     );
+  }
+}
+
+class listviewContainer extends StatelessWidget {
+  final  listviewImage;
+  final Color boxcolor;
+  final Color boxnamecolor;
+  final String textname;
+
+  listviewContainer({@required this.listviewImage,@required this.boxcolor,@required this.boxnamecolor , @required this.textname});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100.0,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(flex: 80, child:Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(child: Image(image: AssetImage('$listviewImage'),)),
+          ), ),
+          Expanded(flex:20, child: Container(
+              decoration: BoxDecoration(
+                color: boxcolor,
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0),bottomRight: Radius.circular(20.0),),
+              ),
+              child: Center(child: Text('$textname', style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold, color: boxnamecolor),))),),
+
+        ],
+      ),
+    );
+  }
+}
+
+class finalContainer extends StatelessWidget {
+  final String textname;
+  finalContainer({@required this.textname});
+  @override
+  Widget build(BuildContext context) {
+    return Text('$textname', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),);
   }
 }
 
